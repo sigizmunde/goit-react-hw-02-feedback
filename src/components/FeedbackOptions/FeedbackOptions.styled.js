@@ -12,4 +12,9 @@ export const Button = styled.button`
   padding: 8px;
   color: var(--light-color);
   background-color: var(--dark-color);
+  cursor: pointer;
+  &:hover {
+    color: var(--dark-color);
+    background-color: white;
+  }
 `;

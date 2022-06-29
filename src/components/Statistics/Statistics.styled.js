@@ -4,7 +4,7 @@ export const StatList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0 8px 0;
-  background-color: var(--mid-light-color);
+  background-color: white;
 `;
 
 export const StatItem = styled.li`

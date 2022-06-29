@@ -25,7 +25,17 @@ class App extends React.Component {
       return { bad: bad + 1 };
     });
 
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((acc, item) => acc + item, 0);
+
+  countPositiveFeedbackPercentage = () =>
+    this.countTotalFeedback() &&
+    Math.round((this.state.good / this.countTotalFeedback()) * 1000) / 10;
+
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const goodPercent = this.countPositiveFeedbackPercentage();
     return (
       <Box className="app" column width="50%">
         <div>
@@ -38,7 +48,13 @@ class App extends React.Component {
         </div>
         <div>
           <Caption className="block__caption">Statistics</Caption>
-          <Statistics state={this.state} />
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={goodPercent}
+          />
         </div>
       </Box>
     );
