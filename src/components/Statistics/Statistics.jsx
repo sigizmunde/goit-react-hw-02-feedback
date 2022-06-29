@@ -1,7 +1,7 @@
 import React from "react";
-import { StatList, StatItem } from "./Stats.styled";
+import { StatList, StatItem } from "./Statistics.styled";
 
-function Stats({ state }) {
+function Statistics({ state }) {
   const stateKeys = Object.keys(state);
   return (
     <StatList className="stats__list">
@@ -14,4 +14,4 @@ function Stats({ state }) {
   );
 }
 
-export default Stats;
+export default Statistics;

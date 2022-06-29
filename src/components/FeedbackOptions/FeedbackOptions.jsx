@@ -1,6 +1,6 @@
-import { Panel, Button } from "./FeedbackBtns.styled";
+import { Panel, Button } from "./FeedbackOptions.styled";
 
-function FeedbackBtns({ onGoodClick, onNeutralClick, onBadClick }) {
+function FeedbackOptions({ onGoodClick, onNeutralClick, onBadClick }) {
   return (
     <Panel className="feedback__panel">
       <Button type="button" className="btn--good" onClick={onGoodClick}>
@@ -16,4 +16,4 @@ function FeedbackBtns({ onGoodClick, onNeutralClick, onBadClick }) {
   );
 }
 
-export default FeedbackBtns;
+export default FeedbackOptions;

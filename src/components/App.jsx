@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import { Box, Caption } from "./App.styled.js";
-import FeedbackBtns from "./FeedbackBtns/FeedbackBtns.jsx";
-import Stats from "./Stats/Stats";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions.jsx";
+import Statistics from "./Statistics/Statistics";
 
 class App extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class App extends React.Component {
       <Box className="app" column width="50%">
         <div>
           <Caption className="block__caption">Please leave feedback</Caption>
-          <FeedbackBtns
+          <FeedbackOptions
             onGoodClick={this.addGood}
             onNeutralClick={this.addNeutral}
             onBadClick={this.addBad}
@@ -39,7 +39,7 @@ class App extends React.Component {
         </div>
         <div>
           <Caption className="block__caption">Statistics</Caption>
-          <Stats state={this.state} />
+          <Statistics state={this.state} />
         </div>
       </Box>
     );
