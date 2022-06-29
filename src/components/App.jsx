@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import { Box, Caption } from "./App.styled.js";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions.jsx";
