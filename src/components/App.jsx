@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Caption } from "./App.styled.js";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions.jsx";
 import Statistics from "./Statistics/Statistics";
+import Notification from "./Notification/Notification.jsx";
 
 class App extends React.Component {
   state = {
@@ -10,20 +11,9 @@ class App extends React.Component {
     bad: 0,
   };
 
-  addGood = () =>
-    this.setState(({ good }) => {
-      return { good: good + 1 };
-    });
-
-  addNeutral = () =>
-    this.setState(({ neutral }) => {
-      return { neutral: neutral + 1 };
-    });
-
-  addBad = () =>
-    this.setState(({ bad }) => {
-      return { bad: bad + 1 };
-    });
+  addFeedback = ({ option }) => {
+    this.setState((state) => ({ [option]: state[option] + 1 }));
+  };
 
   countTotalFeedback = () =>
     Object.values(this.state).reduce((acc, item) => acc + item, 0);
@@ -31,6 +21,8 @@ class App extends React.Component {
   countPositiveFeedbackPercentage = () =>
     this.countTotalFeedback() &&
     Math.round((this.state.good / this.countTotalFeedback()) * 1000) / 10;
+
+  stateKeys = Object.keys(this.state);
 
   render() {
     const { good, neutral, bad } = this.state;
@@ -41,20 +33,23 @@ class App extends React.Component {
         <div>
           <Caption className="block__caption">Please leave feedback</Caption>
           <FeedbackOptions
-            onGoodClick={this.addGood}
-            onNeutralClick={this.addNeutral}
-            onBadClick={this.addBad}
+            options={this.stateKeys}
+            onLeaveFeedback={this.addFeedback}
           />
         </div>
         <div>
           <Caption className="block__caption">Statistics</Caption>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={goodPercent}
-          />
+          {total === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={goodPercent}
+            />
+          )}
         </div>
       </Box>
     );

@@ -8,6 +8,6 @@ export const StatList = styled.ul`
 `;
 
 export const StatItem = styled.li`
-  padding: 0 4px;
+  padding: 8px 4px;
   font-size: 14px;
 `;

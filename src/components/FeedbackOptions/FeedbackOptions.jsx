@@ -1,17 +1,20 @@
 import { Panel, Button } from "./FeedbackOptions.styled";
+import { nanoid } from "nanoid";
 
-function FeedbackOptions({ onGoodClick, onNeutralClick, onBadClick }) {
+function FeedbackOptions({ options, onLeaveFeedback }) {
+  const id = nanoid();
   return (
     <Panel className="feedback__panel">
-      <Button type="button" className="btn--good" onClick={onGoodClick}>
-        Good
-      </Button>
-      <Button type="button" className="btn--neutral" onClick={onNeutralClick}>
-        Neutral
-      </Button>
-      <Button type="button" className="btn--bad" onClick={onBadClick}>
-        Bad
-      </Button>
+      {options.map((option) => (
+        <Button
+          type="button"
+          key={option + id}
+          className={"btn--" + option}
+          onClick={() => onLeaveFeedback({ option })}
+        >
+          {option}
+        </Button>
+      ))}
     </Panel>
   );
 }
