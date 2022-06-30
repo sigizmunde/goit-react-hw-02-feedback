@@ -1,5 +1,6 @@
-import { Panel, Button } from "./FeedbackOptions.styled";
 import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
+import { Panel, Button } from "./FeedbackOptions.styled";
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   const id = nanoid();
@@ -20,3 +21,8 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
 }
 
 export default FeedbackOptions;
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+  onLeaveFeedback: PropTypes.func,
+};

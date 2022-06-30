@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Message } from "./Notification.styled";
 
 function Notification({ message }) {
@@ -5,3 +6,7 @@ function Notification({ message }) {
 }
 
 export default Notification;
+
+Notification.propTypes = {
+  message: PropTypes.string,
+};
