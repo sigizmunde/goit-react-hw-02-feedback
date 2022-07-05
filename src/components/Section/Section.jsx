@@ -1,4 +1,5 @@
 import { SectionBox } from "./Section.styled";
+import PropTypes from "prop-types";
 
 function Section({ heading, children }) {
   return (
@@ -10,3 +11,8 @@ function Section({ heading, children }) {
 }
 
 export default Section;
+
+Section.propTypes = {
+  heading: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
